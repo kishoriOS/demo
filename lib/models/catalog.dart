@@ -1,13 +1,13 @@
 class CatalogModel {
-  static final items = [
-    Item(
-        id: 1,
-        name: "Iphone 12",
-        desc: "Apple 12 generation",
-        price: 999,
-        color: "#33505a",
-        image: "https://picsum.photos/id/237/200/300")
-  ];
+  static List<Item> items = [];
+
+  /*[ Item(
+  id: 1,
+  name: "Iphone 12",
+  desc: "Apple 12 generation",
+  price: 999,
+  color: "#33505a",
+  image: "https://picsum.photos/id/237/200/300") ]*/
 }
 
 class Item {
@@ -19,4 +19,24 @@ class Item {
   final String? image;
 
   Item({this.id, this.name, this.desc, this.price, this.color, this.image});
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map["id"],
+      name: map["name"],
+      desc: map["desc"],
+      price: map["price"],
+      color: map["color"],
+      image: map["image"],
+    );
+  }
+
+  toMap() => {
+        "id": id,
+        "name": name,
+        "desc": desc,
+        "price": price,
+        "color": color,
+        "image": image,
+      };
 }
